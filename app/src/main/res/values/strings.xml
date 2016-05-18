@@ -16,6 +16,7 @@
         <item>Ammah</item>
         <item>Mil</item>
         <item>Parsah</item>
+
     </string-array>
     <string-array name="secularList">
         <item>mm</item>
@@ -25,6 +26,7 @@
         <item>in</item>
         <item>ft</item>
         <item>mi</item>
+
     </string-array>
     <string-array name="convertToSeorah">
         <item>1</item>
@@ -34,6 +36,7 @@
         <item>48</item>
         <item>960000</item>
         <item>3840000</item>
+
     </string-array>
     <string-array name="convertFromMM">
         <item>1</item>
@@ -43,6 +46,7 @@
         <item>25.4</item>
         <item>304.8</item>
         <item>1609000</item>
+
     </string-array>
 
     <string name="GRACH_NAEH">0</string>
