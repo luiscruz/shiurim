@@ -28,31 +28,10 @@
         <item>mi</item>
 
     </string-array>
-    <string-array name="convertToSeorah">
-        <item>1</item>
-        <item>2</item>
-        <item>4</item>
-        <item>8</item>
-        <item>48</item>
-        <item>960000</item>
-        <item>3840000</item>
 
-    </string-array>
-    <string-array name="convertFromMM">
-        <item>1</item>
-        <item>10</item>
-        <item>1000</item>
-        <item>1000000</item>
-        <item>25.4</item>
-        <item>304.8</item>
-        <item>1609000</item>
-
-    </string-array>
 
     <string name="GRACH_NAEH">0</string>
     <string name="CHAZON_ISH">1</string>
 
-    <string name="GRACH_NAEH_CF">1</string>
-    <string name="CHAZON_ISH_CF">1.27</string>
 
 </resources>

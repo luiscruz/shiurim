@@ -1,7 +1,7 @@
 package org.opengemara.shiurim;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -13,9 +13,6 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity
 {
-
-    final int GRACH_NAEH = 0;
-    final int CHAZON_ISH = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -144,30 +141,20 @@ public class MainActivity extends AppCompatActivity
         try
         {
             double heb = Double.parseDouble(hebrewEdit.getText().toString());
-            double mmPerSeorahs = 0;
-            String[] convertToSeorahFactors = getResources().getStringArray(R.array.convertToSeorah);
-            String[] convertFromMMFactors = getResources().getStringArray(R.array.convertFromMM);
             Spinner HebrewSpinner = (Spinner) findViewById(R.id.HebrewSpinner);
+            Spinner OpinionSpinner = (Spinner) findViewById(R.id.OpinionSpinner);
             Spinner SecularSpinner = (Spinner) findViewById(R.id.SecularSpinner);
-            int hebrewSpinnerPos = HebrewSpinner.getSelectedItemPosition();
-            double seorahs = heb * Double.parseDouble(convertToSeorahFactors[hebrewSpinnerPos]);
 
-            if (((Spinner) findViewById(R.id.OpinionSpinner)).getSelectedItemPosition() == Integer.parseInt(getResources().getString(R.string.GRACH_NAEH)))
-            {
-                mmPerSeorahs = Double.parseDouble(getResources().getString(R.string.GRACH_NAEH_CF));
-            }
-            if (((Spinner) findViewById(R.id.OpinionSpinner)).getSelectedItemPosition() == Integer.parseInt(getResources().getString(R.string.CHAZON_ISH)))
-            {
-                mmPerSeorahs = Double.parseDouble(getResources().getString(R.string.CHAZON_ISH_CF));
+            double seorahs = Constants.toSeorah(Constants.getHebrewType(HebrewSpinner.getSelectedItem().toString()), heb);
+            double mm = Constants.seorahToMM(Constants.getOpinion(OpinionSpinner.getSelectedItem().toString()), seorahs);
+            double secularUnits = Constants.fromMM(Constants.getSecularType(SecularSpinner.getSelectedItem().toString()), mm);
 
-            }
-
-            double mm = seorahs * mmPerSeorahs;
-            int secularSpinnerPos = SecularSpinner.getSelectedItemPosition();
-            double secularUnits = mm / Double.parseDouble(convertFromMMFactors[secularSpinnerPos]);
-            System.out.println("" + Double.parseDouble(convertFromMMFactors[secularSpinnerPos]));
             ((TextView) findViewById(R.id.SecularView)).setText(Double.toString(secularUnits));
-
-        }catch (Exception e){}
+        } catch (NumberFormatException e)
+        {
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 }
