@@ -1,4 +1,4 @@
-The Halachic units
+Halachic units
 -----
 
 Shiurim - A quick and easy conversion tool to convert from Biblical, Mishnaic and Halachic units to metric and imperial units.
