@@ -3,8 +3,13 @@ package org.opengemara.shiurim;
 /**
  * Created by OpenGemara on 11/14/2016.
  */
+enum OPINION
+{
+    GRACH_NOEH,
+    CHAZON_ISH
+}
 
-public class Constants
+public class LinearConstants
 {
     public static SECULAR_TYPES getSecularType(String title) throws Exception
     {
@@ -145,10 +150,103 @@ public class Constants
         PARSAH
     }
 
-    public enum OPINION
+}
+
+class AreaConstants
+{
+    public static double fromSquareM(SECULAR_TYPES type, double val) throws Exception
     {
-        GRACH_NOEH,
-        CHAZON_ISH
+        switch (type)
+        {
+            case SQUARE_M:
+                return val / 1.;
+            case SQUARE_KM:
+                return val / 1000000.;
+            case SQUARE_FT:
+                return val / 10.7639;
+            case SQUARE_MI:
+                return val / 3.86102e-7;
+            case ACRE:
+                return val / 0.000247105;
+            default:
+                throw new Exception("Type Error");
+        }
+    }
+
+    public static double toSquareAmmah(HEBREW_TYPES type, double val) throws Exception
+    {
+        switch (type)
+        {
+            case BEIS_KAV:
+                return val * 416;
+            case BEIS_ROVA:
+                return val * 104;
+            case BEIS_SAAH:
+                return val * 2500;
+            case BEIS_KUR:
+                return val * 75000;
+        }
+
+        throw new Exception("Type Error");
+
+    }
+
+    public static double squareAmmahToSquareMeter(OPINION op, double val) throws Exception
+    {
+        double meters = LinearConstants.fromMM(LinearConstants.SECULAR_TYPES.M, LinearConstants.seorahToMM(op, LinearConstants.toSeorah(LinearConstants.HEBREW_TYPES.AMMAH, val)));
+        return meters * meters;
+    }
+
+    public static SECULAR_TYPES getSquareSecularType(String title) throws Exception
+    {
+        switch (title)
+        {
+            case "Acre":
+                return SECULAR_TYPES.ACRE;
+            case "sq. ft.":
+                return SECULAR_TYPES.SQUARE_FT;
+            case "sq. km":
+                return SECULAR_TYPES.SQUARE_KM;
+            case "sq. m":
+                return SECULAR_TYPES.SQUARE_M;
+            case "sq. mi.":
+                return SECULAR_TYPES.SQUARE_MI;
+        }
+        throw new Exception("Type Error");
+    }
+
+    public static HEBREW_TYPES getSquareHebrewType(String title) throws Exception
+    {
+        switch (title)
+        {
+            case "Beis Kav":
+                return HEBREW_TYPES.BEIS_KAV;
+            case "Beis Kur":
+                return HEBREW_TYPES.BEIS_KUR;
+            case "Beis Rova":
+                return HEBREW_TYPES.BEIS_ROVA;
+            case "Beis Saah":
+                return HEBREW_TYPES.BEIS_SAAH;
+        }
+        throw new Exception("Type Error");
+    }
+
+    public enum HEBREW_TYPES
+    {
+        SQUARE_SEORAH,
+        BEIS_KUR,
+        BEIS_SAAH,
+        BEIS_KAV,
+        BEIS_ROVA
+    }
+
+    public enum SECULAR_TYPES
+    {
+        SQUARE_M,
+        SQUARE_KM,
+        SQUARE_FT,
+        SQUARE_MI,
+        ACRE
     }
 
 }

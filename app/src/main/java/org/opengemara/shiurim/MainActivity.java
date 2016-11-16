@@ -32,13 +32,13 @@ public class MainActivity extends AppCompatActivity
         Spinner typeSpinner = (Spinner) findViewById(R.id.TypeSpinner);
         ArrayAdapter<CharSequence> typeAdapter = ArrayAdapter.createFromResource(this,
                 R.array.typeList, android.R.layout.simple_spinner_item);
-        opinionAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        typeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         typeSpinner.setAdapter(typeAdapter);
 
         //setup hebrewSpinner
         Spinner hebrewSpinner = (Spinner) findViewById(R.id.HebrewSpinner);
         ArrayAdapter<CharSequence> hebrewAdapter = ArrayAdapter.createFromResource(this,
-                R.array.hebrewList, android.R.layout.simple_spinner_item);
+                R.array.hebrewLinearList, android.R.layout.simple_spinner_item);
         hebrewAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         hebrewSpinner.setAdapter(hebrewAdapter);
 
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity
         //setup secularSpinner
         Spinner secularSpinner = (Spinner) findViewById(R.id.SecularSpinner);
         ArrayAdapter<CharSequence> secularAdapter = ArrayAdapter.createFromResource(this,
-                R.array.secularList, android.R.layout.simple_spinner_item);
+                R.array.secularLinearList, android.R.layout.simple_spinner_item);
         secularAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         secularSpinner.setAdapter(secularAdapter);
 
@@ -145,9 +145,9 @@ public class MainActivity extends AppCompatActivity
             Spinner OpinionSpinner = (Spinner) findViewById(R.id.OpinionSpinner);
             Spinner SecularSpinner = (Spinner) findViewById(R.id.SecularSpinner);
 
-            double seorahs = Constants.toSeorah(Constants.getHebrewType(HebrewSpinner.getSelectedItem().toString()), heb);
-            double mm = Constants.seorahToMM(Constants.getOpinion(OpinionSpinner.getSelectedItem().toString()), seorahs);
-            double secularUnits = Constants.fromMM(Constants.getSecularType(SecularSpinner.getSelectedItem().toString()), mm);
+            double seorahs = LinearConstants.toSeorah(LinearConstants.getHebrewType(HebrewSpinner.getSelectedItem().toString()), heb);
+            double mm = LinearConstants.seorahToMM(LinearConstants.getOpinion(OpinionSpinner.getSelectedItem().toString()), seorahs);
+            double secularUnits = LinearConstants.fromMM(LinearConstants.getSecularType(SecularSpinner.getSelectedItem().toString()), mm);
 
             ((TextView) findViewById(R.id.SecularView)).setText(Double.toString(secularUnits));
         } catch (NumberFormatException e)

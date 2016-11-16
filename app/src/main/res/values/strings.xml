@@ -6,9 +6,9 @@
     </string-array>
     <string-array name="typeList">
         <item>Length</item>
-        <item>Weight</item>
+        <item>Area</item>
     </string-array>
-    <string-array name="hebrewList">
+    <string-array name="hebrewLinearList">
         <item>Se\'Orah</item>
         <item>Agodal</item>
         <item>Aniva</item>
@@ -18,7 +18,7 @@
         <item>Parsah</item>
 
     </string-array>
-    <string-array name="secularList">
+    <string-array name="secularLinearList">
         <item>mm</item>
         <item>cm</item>
         <item>m</item>
